@@ -12,8 +12,8 @@ type FormatDataImpl struct{}
 
 func (fdi *FormatDataImpl) DoFormat(data *example.Data) (r *example.Data, err error) {
 	var rData example.Data
-	rData.Text = strings.ToUpper(data.Text)
-
+	fmt.Println("receive:=>", data.Text)
+	rData.Text = "server handler result:=>" + strings.ToUpper(data.Text)
 	return &rData, nil
 }
 
@@ -23,7 +23,6 @@ const (
 )
 
 func main() {
-
 	handler := &FormatDataImpl{}
 	processor := example.NewFormatDataProcessor(handler)
 	serverTransport, err := thrift.NewTServerSocket(HOST + ":" + PORT)
