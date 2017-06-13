@@ -4,9 +4,9 @@ import (
 	"git.apache.org/thrift.git/lib/go/thrift"
 	"net"
 	"fmt"
-	"ThriftDemo/example"
 	"log"
 	"time"
+	"thrift-example-with-go/example"
 )
 
 const (
@@ -14,14 +14,11 @@ const (
 	PORT = "8080"
 )
 
+//100000次调用总用时8.274608845
+//QPS:12085.163404482355
 
-//10000次调用总用时1.039004364
-//QPS:10000
-
-//100000次调用总用时10.687179334
-//QPS:10000
-
-
+//10000次调用总用时0.729874584
+//QPS:13700.984003575057
 
 func main() {
 	tSocket, err := thrift.NewTSocket(net.JoinHostPort(HOST, PORT))
@@ -42,7 +39,7 @@ func main() {
 	data := example.Data{Text: "hello,world aaaaa bbbbb!"}
 
 	start := time.Now()
-	var n = 10000
+	var n = 100000
 	for i := 1; i <= n; i++ {
 		d, err := client.DoFormat(&data)
 		fmt.Println(d.Text)
@@ -53,5 +50,5 @@ func main() {
 	}
 	end := time.Since(start).Seconds()
 	fmt.Printf("%v次调用总用时%v\n", n, end)
-	fmt.Printf("QPS:%v\n", n/int(end))
+	fmt.Printf("QPS:%v\n", float64(n)/end)
 }

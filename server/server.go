@@ -1,11 +1,11 @@
 package main
 
 import (
-	"ThriftDemo/example"
 	"strings"
 	"git.apache.org/thrift.git/lib/go/thrift"
 	"fmt"
 	"log"
+	"thrift-example-with-go/example"
 )
 
 type FormatDataImpl struct{}
