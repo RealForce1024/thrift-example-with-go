@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 	"time"
-	"thrift-example-with-go/example"
+	"echo-server/thrift-example-with-go/example"
 )
 
 const (

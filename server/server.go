@@ -5,7 +5,7 @@ import (
 	"git.apache.org/thrift.git/lib/go/thrift"
 	"fmt"
 	"log"
-	"thrift-example-with-go/example"
+	"echo-server/thrift-example-with-go/example"
 )
 
 type FormatDataImpl struct{}
